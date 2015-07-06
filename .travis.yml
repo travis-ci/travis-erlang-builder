@@ -1,0 +1,13 @@
+language: erlang
+
+env:
+  - ERL_VERSION=17.5
+
+before_install:
+  - kerl update releases
+
+install:
+  - true
+
+script:
+  -
