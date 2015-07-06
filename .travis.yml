@@ -5,7 +5,7 @@ env:
 
 before_install:
   - kerl update releases
-  - mkdir artifacts
+  - mkdir $HOME/archive
 
 install:
   - true
@@ -15,14 +15,15 @@ script:
   - kerl install $ERLANG_VERSION $HOME/otp/$ERLANG_VERSION
   - source $HOME/otp/$ERLANG_VERSION/activate
 
+
 after_success:
   - pushd $HOME/otp
-  - tar cjvf $TRAVIS_BUILD_DIR/artifacts/erlang-${ERLANG_VERSION}-x86_64.tar.bz2 $ERLANG_VERSION
+  - tar cjvf $HOME/archive/erlang-${ERLANG_VERSION}-x86_64.tar.bz2 $ERLANG_VERSION
 
 deploy:
   provider: s3
   upload_dir: ubuntu/12.04
-  local_dir: artifacts
+  local_dir: $HOME/archive
   skip_cleanup: true
   bucket: travis-otp-releases
   access_key_id: $ACCESS_KEY_ID
