@@ -22,6 +22,7 @@ after_success:
 deploy:
   provider: s3
   upload_dir: ubuntu/12.04
+  local_dir: artifacts
   skip_cleanup: true
   bucket: travis-otp-releases
   access_key_id: $ACCESS_KEY_ID
