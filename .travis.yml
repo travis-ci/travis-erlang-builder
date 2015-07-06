@@ -1,7 +1,7 @@
 language: erlang
 
 env:
-  - ERLANG_VERSION=17.5
+  - ERLANG_VERSION=18.0
 
 before_install:
   - kerl update releases
