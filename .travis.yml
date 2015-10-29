@@ -25,6 +25,7 @@ script:
 after_success:
   - pushd $HOME/otp
   - tar cjvf ${TARGET_DIR}/erlang-${ERLANG_VERSION}.tar.bz2 $ERLANG_VERSION
+  - popd
 
 deploy:
   provider: s3
