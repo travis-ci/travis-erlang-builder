@@ -2,10 +2,13 @@ language: erlang
 
 env:
   - ERLANG_VERSION=18.1
+  - OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
+  - RELEASE=$(lsb_release -rs 2>/dev/null || sw_vers -productVersion | sed 's/^\([0-9][0-9]*.[0-9][0-9]*\).*/\1/')
+  - TARGET_DIR=$HOME/archive/binaries/$OS_NAME/${RELEASE}/$(uname -m)
 
 before_install:
   - kerl update releases
-  - mkdir $HOME/archive
+  - mkdir -p $TARGET_DIR
 
 install:
   - true
@@ -18,11 +21,10 @@ script:
 
 after_success:
   - pushd $HOME/otp
-  - tar cjvf $HOME/archive/erlang-${ERLANG_VERSION}-x86_64.tar.bz2 $ERLANG_VERSION
+  - tar cjvf ${TARGET_DIR}/erlang-${ERLANG_VERSION}.tar.bz2 $ERLANG_VERSION
 
 deploy:
   provider: s3
-  upload_dir: ubuntu/12.04
   local_dir: $HOME/archive
   skip_cleanup: true
   bucket: travis-otp-releases
