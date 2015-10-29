@@ -1,5 +1,7 @@
 language: erlang
 
+sudo: false
+
 env:
   global:
     - ERLANG_VERSION=18.1
