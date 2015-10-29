@@ -1,10 +1,11 @@
 language: erlang
 
 env:
-  - ERLANG_VERSION=18.1
-  - OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
-  - RELEASE=$(lsb_release -rs 2>/dev/null || sw_vers -productVersion | sed 's/^\([0-9][0-9]*.[0-9][0-9]*\).*/\1/')
-  - TARGET_DIR=$HOME/archive/binaries/$OS_NAME/${RELEASE}/$(uname -m)
+  global:
+    - ERLANG_VERSION=18.1
+    - OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
+    - RELEASE=$(lsb_release -rs 2>/dev/null || sw_vers -productVersion | sed 's/^\([0-9][0-9]*.[0-9][0-9]*\).*/\1/')
+    - TARGET_DIR=$HOME/archive/binaries/$OS_NAME/${RELEASE}/$(uname -m)
 
 before_install:
   - kerl update releases
