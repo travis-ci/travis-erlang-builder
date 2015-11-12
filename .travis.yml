@@ -2,15 +2,14 @@ language: erlang
 
 matrix:
   include:
-    # - sudo: required
-    #   services:
-    #     - docker
-    #   env:
-    #     - RELEASE=trusty
-    # - sudo: required
-    #   env:
-    #     - RELEASE=precise
-    - os: osx
+    - sudo: required
+      services:
+        - docker
+      env:
+        - RELEASE=trusty
+    - sudo: required
+      env:
+        - RELEASE=precise
 
 env:
   global:
