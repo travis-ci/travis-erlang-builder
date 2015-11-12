@@ -1,6 +1,16 @@
 language: erlang
 
-sudo: false
+matrix:
+  include:
+    # - sudo: required
+    #   services:
+    #     - docker
+    #   env:
+    #     - RELEASE=trusty
+    # - sudo: required
+    #   env:
+    #     - RELEASE=precise
+    - os: osx
 
 env:
   global:
