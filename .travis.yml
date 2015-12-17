@@ -3,8 +3,8 @@ language: erlang
 matrix:
   include:
     - sudo: required
-      services:
-        - docker
+      dist: trusty
+      group: edge
       env:
         - RELEASE=trusty
     - sudo: required
