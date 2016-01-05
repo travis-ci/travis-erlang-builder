@@ -13,7 +13,7 @@ matrix:
 
 env:
   global:
-    - ERLANG_VERSION=18.2
+    - ERLANG_VERSION=18.2.1
 
 before_install:
   - kerl update releases
