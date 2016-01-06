@@ -18,8 +18,8 @@ env:
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
   - export RELEASE=$(lsb_release -rs 2>/dev/null || sw_vers -productVersion | sed 's/^\([0-9][0-9]*.[0-9][0-9]*\).*/\1/')
-  - export TARGET_DIR=$HOME/archive/binaries/$OS_NAME/${RELEASE}/$(uname -m)
-  - mkdir -p $TARGET_DIR
+  - export TARGET_DIR=${TRAVIS_BUILD_DIR}/${OS_NAME}/${RELEASE}/$(uname -m)
+  - mkdir -p ${TARGET_DIR}
 
 install:
   - true
@@ -31,6 +31,6 @@ after_success: ./bin/archive
 addons:
   artifacts:
     paths:
-    - '${TARGET_DIR}/'
+    - '${OS_NAME}'
     target_paths:
     - '/binaries/${OS_NAME}/${LSB_RELEASE}/${ARCH}'
