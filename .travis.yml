@@ -6,41 +6,31 @@ matrix:
       dist: trusty
       group: edge
       env:
-        - RELEASE=trusty
+      - DIST=trusty
     - sudo: required
       env:
-        - RELEASE=precise
+      - DIST=precise
 
 env:
   global:
-    - ERLANG_VERSION=18.2.1
+  - ERLANG_VERSION=18.2.1
 
 before_install:
-  - kerl update releases
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
   - export RELEASE=$(lsb_release -rs 2>/dev/null || sw_vers -productVersion | sed 's/^\([0-9][0-9]*.[0-9][0-9]*\).*/\1/')
-  - export TARGET_DIR=$HOME/archive/binaries/$OS_NAME/${RELEASE}/$(uname -m)
-  - mkdir -p $TARGET_DIR
+  - export TARGET_DIR=${TRAVIS_BUILD_DIR}/${OS_NAME}/${RELEASE}/$(uname -m)
+  - mkdir -p ${TARGET_DIR}
 
 install:
   - true
 
-script:
-  - kerl build $ERLANG_VERSION $ERLANG_VERSION
-  - kerl install $ERLANG_VERSION $HOME/otp/$ERLANG_VERSION
-  - source $HOME/otp/$ERLANG_VERSION/activate
+script: ./bin/compile
 
+after_success: ./bin/archive
 
-after_success:
-  - pushd $HOME/otp
-  - tar cjvf ${TARGET_DIR}/erlang-${ERLANG_VERSION}.tar.bz2 $ERLANG_VERSION
-  - popd
-
-deploy:
-  provider: s3
-  local_dir: $HOME/archive
-  skip_cleanup: true
-  bucket: travis-otp-releases
-  access_key_id: $ACCESS_KEY_ID
-  secret_access_key: $SECRET_ACCESS_KEY
-  acl: public_read
+addons:
+  artifacts:
+    paths:
+    - '${OS_NAME}'
+    target_paths:
+    - '/binaries/${OS_NAME}/${LSB_RELEASE}/${ARCH}'

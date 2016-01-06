@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -o errexit
+
+[[ ${ERLANG_VERSION} ]] || {
+  echo 'Missing $ERLANG_VERSION' >&2
+  exit 1
+}
+
+[[ ${TARGET_DIR} ]] || {
+  echo 'Missing $TARGET_DIR' >&2
+  exit 1
+}
+
+tar -C "${HOME}/otp" -cjf \
+  "${TARGET_DIR}/erlang-${ERLANG_VERSION}-nonroot.tar.bz2" \
+  "${ERLANG_VERSION}"
+
+echo "Created ${TARGET_DIR}/erlang-${ERLANG_VERSION}-nonroot.tar.bz2"
+
+tar -C / -cjf \
+  "${TARGET_DIR}/erlang-${ERLANG_VERSION}.tar.bz2" \
+  "${HOME}/otp/${ERLANG_VERSION}"
+
+echo "Created ${TARGET_DIR}/erlang-${ERLANG_VERSION}.tar.bz2"
