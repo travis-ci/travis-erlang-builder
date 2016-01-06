@@ -7,6 +7,10 @@ set -o errexit
   exit 1
 }
 
+if [[ -f ~/.kerl/otp_builds ]] ; then
+  sed -i "/^${ERLANG_VERSION}/d" ~/.kerl/otp_builds
+fi
+
 kerl update releases
 kerl build "${ERLANG_VERSION}" "${ERLANG_VERSION}"
 kerl install "${ERLANG_VERSION}" "${HOME}/otp/${ERLANG_VERSION}"
