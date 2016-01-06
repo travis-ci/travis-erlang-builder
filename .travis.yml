@@ -13,7 +13,7 @@ matrix:
 
 env:
   global:
-  - ERLANG_VERSION=18.2
+  - ERLANG_VERSION=18.1
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
