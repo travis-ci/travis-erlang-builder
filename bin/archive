@@ -13,11 +13,15 @@ set -o errexit
 }
 
 cd "${HOME}/otp"
-tar -cjvf \
+tar -cjf \
   "${TARGET_DIR}/erlang-${ERLANG_VERSION}-nonroot.tar.bz2" \
   "${ERLANG_VERSION}"
 
+echo "Created ${TARGET_DIR}/erlang-${ERLANG_VERSION}-nonroot.tar.bz2"
+
 cd /
-tar -cjvf \
+tar -cjf \
   "${TARGET_DIR}/erlang-${ERLANG_VERSION}.tar.bz2" \
   "${HOME}/otp/${ERLANG_VERSION}"
+
+echo "Created ${TARGET_DIR}/erlang-${ERLANG_VERSION}.tar.bz2"
