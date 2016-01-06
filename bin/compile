@@ -8,5 +8,6 @@ set -o errexit
 }
 
 kerl update releases
+rm -rf "${HOME}/otp/${ERLANG_VERSION}"
 kerl build "${ERLANG_VERSION}" "${ERLANG_VERSION}"
 kerl install "${ERLANG_VERSION}" "${HOME}/otp/${ERLANG_VERSION}"
