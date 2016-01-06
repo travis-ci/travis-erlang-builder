@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o errexit
+
+[[ ${ERLANG_VERSION} ]] || {
+  echo 'Missing $ERLANG_VERSION' >&2
+  exit 1
+}
+
+kerl update releases
+kerl build "${ERLANG_VERSION}" "${ERLANG_VERSION}"
+kerl install "${ERLANG_VERSION}" "${HOME}/otp/${ERLANG_VERSION}"
