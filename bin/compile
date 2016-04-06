@@ -11,6 +11,6 @@ if [[ -f ~/.kerl/otp_builds ]] ; then
   sed -i "/^${ERLANG_VERSION}/d" ~/.kerl/otp_builds
 fi
 
-kerl update releases
+bash -x kerl update releases
 kerl build "${ERLANG_VERSION}" "${ERLANG_VERSION}"
 kerl install "${ERLANG_VERSION}" "${HOME}/otp/${ERLANG_VERSION}"
