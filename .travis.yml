@@ -22,7 +22,7 @@ before_install:
   - mkdir -p ${TARGET_DIR}
 
 install:
-  - true
+  - sudo curl -o `which kerl` https://raw.githubusercontent.com/yrashk/kerl/master/kerl
 
 script: ./bin/compile
 
