@@ -11,7 +11,7 @@ if [[ -f ~/.kerl/otp_builds ]] ; then
   sed -i "/^${ERLANG_VERSION}/d" ~/.kerl/otp_builds
 fi
 
-curl -o `which kerl` https://raw.githubusercontent.com/kerl/kerl/master/kerl
+sudo curl -o `which kerl` https://raw.githubusercontent.com/kerl/kerl/master/kerl
 
 bash -x kerl update releases
 kerl build "${ERLANG_VERSION}" "${ERLANG_VERSION}"
