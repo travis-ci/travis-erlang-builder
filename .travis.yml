@@ -7,11 +7,9 @@ matrix:
       group: edge
       env:
       - DIST=trusty
-        ERLANG_VERSION=19.0
     - sudo: required
       env:
       - DIST=precise
-        ERLANG_VERSION=19.0
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
