@@ -1,5 +1,8 @@
 language: erlang
 
+env:
+  global:
+    - KERL_BUILD_BACKEND=git
 matrix:
   include:
     - sudo: required
