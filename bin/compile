@@ -2,17 +2,17 @@
 
 set -o errexit
 
-[[ ${ERLANG_VERSION} ]] || {
-  echo 'Missing $ERLANG_VERSION' >&2
+[[ ${VERSION} ]] || {
+  echo 'Missing $VERSION' >&2
   exit 1
 }
 
 if [[ -f ~/.kerl/otp_builds ]] ; then
-  sed -i "/^${ERLANG_VERSION}/d" ~/.kerl/otp_builds
+  sed -i "/^${VERSION}/d" ~/.kerl/otp_builds
 fi
 
 sudo curl -o `which kerl` https://raw.githubusercontent.com/kerl/kerl/master/kerl
 
 bash -x kerl update releases
-kerl build "${ERLANG_VERSION}" "${ERLANG_VERSION}"
-kerl install "${ERLANG_VERSION}" "${HOME}/otp/${ERLANG_VERSION}"
+kerl build "${VERSION}" "${VERSION}"
+kerl install "${VERSION}" "${HOME}/otp/${VERSION}"
