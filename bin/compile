@@ -11,8 +11,6 @@ if [[ -f ~/.kerl/otp_builds ]] ; then
   sed -i "/^${VERSION}/d" ~/.kerl/otp_builds
 fi
 
-sudo curl -o `which kerl` https://raw.githubusercontent.com/kerl/kerl/master/kerl
-
 bash -x kerl update releases
 kerl build "${VERSION}" "${VERSION}"
 kerl install "${VERSION}" "${HOME}/otp/${VERSION}"

@@ -7,6 +7,15 @@ env:
 matrix:
   include:
     - sudo: required
+      # The `erlang` tag has been temporarily removed from the Opal image,
+      # until the first erlang builds for Xenial are available, so for now
+      # we have to reference the image by its codename instead:
+      language: __opal__
+      dist: xenial
+      group: edge
+      env:
+      - DIST=xenial
+    - sudo: required
       dist: trusty
       group: edge
       env:
@@ -22,7 +31,9 @@ before_install:
   - mkdir -p ${TARGET_DIR}
 
 install:
-  - sudo curl -o `which kerl` https://raw.githubusercontent.com/yrashk/kerl/master/kerl
+  # Downloading to a location that's earlier in PATH than any pre-installed version.
+  - curl -o "${HOME}/bin/kerl" https://raw.githubusercontent.com/yrashk/kerl/master/kerl
+  - chmod +x "${HOME}/bin/kerl"
 
 script: ./bin/compile
 
