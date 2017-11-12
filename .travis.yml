@@ -3,6 +3,7 @@ language: erlang
 env:
   global:
     - KERL_BUILD_BACKEND=git
+    - VERSION=20.1.7
 matrix:
   include:
     - sudo: required
