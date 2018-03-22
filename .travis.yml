@@ -13,6 +13,11 @@ matrix:
     - sudo: required
       env:
       - DIST=precise
+    - sudo: required
+      language: generic
+      dist: xenial
+      env:
+      - DIST=xenail
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
