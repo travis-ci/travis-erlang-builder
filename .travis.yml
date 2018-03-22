@@ -18,7 +18,7 @@ matrix:
       dist: xenial
       group: edge
       env:
-      - DIST=xenail
+      - DIST=xenial
       before_script:
       - curl -O https://raw.githubusercontent.com/kerl/kerl/master/kerl
       - chmod +x kerl
