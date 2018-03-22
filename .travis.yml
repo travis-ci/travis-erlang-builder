@@ -19,10 +19,6 @@ matrix:
       group: edge
       env:
       - DIST=xenial
-      before_script:
-      - curl -O https://raw.githubusercontent.com/kerl/kerl/master/kerl
-      - chmod +x kerl
-      - sudo mv kerl /usr/local/bin/kerl
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
@@ -31,7 +27,13 @@ before_install:
   - mkdir -p ${TARGET_DIR}
 
 install:
-  - sudo curl -o `which kerl` https://raw.githubusercontent.com/yrashk/kerl/master/kerl
+  - |
+    if command -v kerl >&/dev/null; then
+      curl -O https://raw.githubusercontent.com/kerl/kerl/master/kerl
+      chmod +x kerl
+      sudo mv kerl /usr/local/bin/kerl
+    fi
+    sudo curl -o `which kerl` https://raw.githubusercontent.com/yrashk/kerl/master/kerl
 
 script: ./bin/compile
 
