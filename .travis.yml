@@ -18,6 +18,10 @@ matrix:
       dist: xenial
       env:
       - DIST=xenail
+      before_script:
+      - curl -O https://raw.githubusercontent.com/kerl/kerl/master/kerl
+      - chmod +x kerl
+      - sudo mv kerl /usr/local/bin/kerl
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
