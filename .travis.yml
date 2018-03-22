@@ -16,6 +16,7 @@ matrix:
     - sudo: required
       language: generic
       dist: xenial
+      group: edge
       env:
       - DIST=xenail
       before_script:
