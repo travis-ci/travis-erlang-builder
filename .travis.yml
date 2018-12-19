@@ -8,24 +8,20 @@ matrix:
     - sudo: required
       dist: trusty
       group: edge
-      env:
-      - DIST=trusty
+      name: trusty
     - sudo: required
-      env:
-      - DIST=precise
+      name: precise
     - sudo: required
       language: generic
       dist: xenial
       group: edge
-      env:
-      - DIST=xenial
+      name: xenial
     - sudo: required
       arch: ppc64le
       language: generic
       dist: xenial
       group: edge
-      env:
-      - DIST=xenial
+      name: xenial-ppc64le
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
