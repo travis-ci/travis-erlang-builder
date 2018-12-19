@@ -19,11 +19,19 @@ matrix:
       group: edge
       env:
       - DIST=xenial
+    - sudo: required
+      arch: ppc64le
+      language: generic
+      dist: xenial
+      group: edge
+      env:
+      - DIST=xenial
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
   - export RELEASE=$(lsb_release -rs 2>/dev/null || sw_vers -productVersion | sed 's/^\([0-9][0-9]*.[0-9][0-9]*\).*/\1/')
   - export TARGET_DIR=${TRAVIS_BUILD_DIR}/${OS_NAME}/${RELEASE}/$(uname -m)
+  - export VERSION=21.2
   - mkdir -p ${TARGET_DIR}
 
 install:
@@ -35,7 +43,7 @@ install:
     fi
     sudo curl -o `which kerl` https://raw.githubusercontent.com/yrashk/kerl/master/kerl
 
-script: ./bin/compile
+script: travis_wait ./bin/compile
 
 after_success: ./bin/archive
 
