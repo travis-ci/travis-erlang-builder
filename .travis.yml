@@ -39,7 +39,7 @@ install:
     fi
     sudo curl -o `which kerl` https://raw.githubusercontent.com/yrashk/kerl/master/kerl
 
-script: travis_wait ./bin/compile
+script: ./bin/compile
 
 after_success: ./bin/archive
 
