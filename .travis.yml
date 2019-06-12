@@ -22,6 +22,11 @@ matrix:
       dist: xenial
       group: edge
       name: xenial-ppc64le
+    - sudo: required
+      language: minimal
+      dist: bionic
+      group: dev
+      name: bionic
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
