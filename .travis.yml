@@ -3,7 +3,7 @@ language: erlang
 env:
   global:
     - KERL_BUILD_BACKEND=git
-matrix:
+jobs:
   include:
     - sudo: required
       dist: trusty
