@@ -7,24 +7,30 @@ jobs:
   include:
     - sudo: required
       dist: trusty
+      os: linux
       group: edge
       name: trusty
     - sudo: required
+      dist: precise
+      os: linux
       name: precise
     - sudo: required
       language: generic
       dist: xenial
+      os: linux
       group: edge
       name: xenial
     - sudo: required
       arch: ppc64le
       language: generic
       dist: xenial
+      os: linux
       group: edge
       name: xenial-ppc64le
     - sudo: required
       language: minimal
       dist: bionic
+      os: linux
       group: dev
       name: bionic
 
