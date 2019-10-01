@@ -11,6 +11,7 @@ jobs:
       name: trusty
     - sudo: required
       name: precise
+      dist: precise
     - sudo: required
       language: generic
       dist: xenial
