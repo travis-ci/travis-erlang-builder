@@ -38,11 +38,12 @@ jobs:
       dist: xenial
       os: linux
       arch: arm64
+      name: arm64-xenial
     - language: minimal
       dist: bionic
       os: linux
       arch: arm64
-      name: arm64-xenial
+      name: arm64-bionic
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
