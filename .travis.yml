@@ -45,10 +45,12 @@ jobs:
       arch: arm64
       name: arm64-bionic
     - dist: focal
+      language: generic
       os: linux
       group: dev
       name: focal amd64
     - dist: focal
+      language: generic
       os: linux
       group: edge
       arch: arm64-graviton2
