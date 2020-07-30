@@ -44,6 +44,17 @@ jobs:
       os: linux
       arch: arm64
       name: arm64-bionic
+    - dist: focal
+      os: linux
+      group: dev
+      name: focal amd64
+    - dist: focal
+      os: linux
+      group: edge
+      arch: arm64-graviton2
+      name: focal arm64
+      virt: lxd
+
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
