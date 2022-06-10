@@ -56,6 +56,11 @@ jobs:
       arch: arm64-graviton2
       name: focal arm64
       virt: lxd
+    - dist: jammy
+      language: generic
+      os: linux
+      group: dev
+      name: jammy amd64
 
 
 before_install:
