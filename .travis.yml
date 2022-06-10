@@ -57,7 +57,7 @@ jobs:
       name: focal arm64
       virt: lxd
     - dist: jammy
-      language: generic
+      language: minimal
       os: linux
       group: dev
       name: jammy amd64
