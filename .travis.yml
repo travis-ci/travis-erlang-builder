@@ -1,3 +1,4 @@
+---
 language: erlang
 
 env:
@@ -14,13 +15,28 @@ jobs:
       dist: precise
       os: linux
       name: precise
-      dist: precise
     - sudo: required
       language: generic
       dist: xenial
       os: linux
       group: edge
       name: xenial
+    - sudo: required
+      language: minimal
+      dist: bionic
+      os: linux
+      group: dev
+      name: bionic
+    - dist: focal
+      language: generic
+      os: linux
+      group: dev
+      name: focal
+    - dist: jammy
+      language: minimal
+      os: linux
+      group: dev
+      name: jammy
     - sudo: required
       arch: ppc64le
       language: generic
@@ -29,11 +45,26 @@ jobs:
       group: edge
       name: xenial-ppc64le
     - sudo: required
-      language: minimal
+      arch: ppc64le
+      language: generic
       dist: bionic
       os: linux
-      group: dev
-      name: bionic
+      group: edge
+      name: bionic-ppc64le
+    - sudo: required
+      arch: ppc64le
+      language: generic
+      dist: focal
+      os: linux
+      group: edge
+      name: focal-ppc64le
+    - sudo: required
+      arch: ppc64le
+      language: generic
+      dist: jammy
+      os: linux
+      group: edge
+      name: jammy-ppc64le
     - language: minimal
       dist: xenial
       os: linux
@@ -47,21 +78,15 @@ jobs:
     - dist: focal
       language: generic
       os: linux
-      group: dev
-      name: focal amd64
-    - dist: focal
+      group: edge
+      arch: arm64
+      name: arm64-focal
+    - dist: jammy
       language: generic
       os: linux
       group: edge
-      arch: arm64-graviton2
-      name: focal arm64
-      virt: lxd
-    - dist: jammy
-      language: minimal
-      os: linux
-      group: dev
-      name: jammy amd64
-
+      arch: arm64
+      name: arm64-jammy
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
@@ -86,6 +111,6 @@ after_success: ./bin/archive
 addons:
   artifacts:
     paths:
-    - '${OS_NAME}'
+      - "${OS_NAME}"
     target_paths:
-    - '/binaries/${OS_NAME}/${LSB_RELEASE}/${ARCH}'
+      - "/binaries/${OS_NAME}/${LSB_RELEASE}/${ARCH}"
