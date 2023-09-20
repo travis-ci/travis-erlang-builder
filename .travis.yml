@@ -87,6 +87,22 @@ jobs:
       group: edge
       arch: arm64
       name: arm64-jammy
+    - dist: xenial
+      os: linux
+      arch: s390x
+      name: s390x-xenial
+    - dist: bionic
+      os: linux
+      arch: s390x
+      name: s390x-bionic
+    - dist: focal
+      os: linux
+      arch: s390x
+      name: s390x-focal
+    - dist: jammy
+      os: linux
+      arch: s390x
+      name: s390x-jammy
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
