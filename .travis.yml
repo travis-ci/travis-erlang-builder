@@ -6,103 +6,60 @@ env:
     - KERL_BUILD_BACKEND=git
 jobs:
   include:
-    - sudo: required
-      dist: trusty
-      os: linux
-      group: edge
-      name: trusty
-    - sudo: required
-      dist: precise
-      os: linux
-      name: precise
-    - sudo: required
-      language: generic
-      dist: xenial
-      os: linux
-      group: edge
-      name: xenial
-    - sudo: required
-      language: minimal
-      dist: bionic
-      os: linux
-      group: dev
+    
+    #   dist: xenial
+    #   group: edge
+    #   name: xenial
+    - dist: bionic
       name: bionic
     - dist: focal
-      language: generic
-      os: linux
-      group: dev
       name: focal
     - dist: jammy
-      language: minimal
-      os: linux
-      group: dev
       name: jammy
-    - sudo: required
-      arch: ppc64le
-      language: generic
-      dist: xenial
-      os: linux
-      group: edge
-      name: xenial-ppc64le
-    - sudo: required
-      arch: ppc64le
-      language: generic
-      dist: bionic
-      os: linux
-      group: edge
-      name: bionic-ppc64le
-    - sudo: required
-      arch: ppc64le
-      language: generic
-      dist: focal
-      os: linux
-      group: edge
-      name: focal-ppc64le
-    - sudo: required
-      arch: ppc64le
-      language: generic
-      dist: jammy
-      os: linux
-      group: edge
-      name: jammy-ppc64le
-    - language: minimal
-      dist: xenial
-      os: linux
-      arch: arm64
-      name: arm64-xenial
-    - language: minimal
-      dist: bionic
-      os: linux
-      arch: arm64
-      name: arm64-bionic
-    - dist: focal
-      language: generic
-      os: linux
-      group: edge
-      arch: arm64
-      name: arm64-focal
-    - dist: jammy
-      language: generic
-      os: linux
-      group: edge
-      arch: arm64
-      name: arm64-jammy
-    - dist: xenial
-      os: linux
-      arch: s390x
-      name: s390x-xenial
+    - dist: noble
+      name: noble
+
     - dist: bionic
-      os: linux
-      arch: s390x
-      name: s390x-bionic
+      arch: ppc64le
+      name: bionic-ppc64le
     - dist: focal
-      os: linux
-      arch: s390x
-      name: s390x-focal
+      arch: ppc64le
+      name: focal-ppc64le
     - dist: jammy
-      os: linux
+      arch: ppc64le
+      name: jammy-ppc64le
+    - dist: noble
+      arch: ppc64le
+      name: noble-ppc64le
+
+    - dist: bionic
+      arch: arm64
+      name: bionic-arm64
+    - dist: focal
+      arch: arm64
+      name: focal-arm64
+    - dist: jammy
+      arch: arm64
+      name: jammy-arm64
+    - dist: noble
+      arch: arm64
+      name: noble-arm64
+
+    # - dist: xenial
+    #   arch: s390x
+    #   name: s390x-xenial
+    - dist: bionic
       arch: s390x
-      name: s390x-jammy
+      name: bionic-s390x
+    - dist: focal
+      arch: s390x
+      name: focal-s390x
+    - dist: jammy
+      arch: s390x
+      name: jammy-s390x
+    - dist: noble
+      arch: s390x
+      name: noble-s390x     
 
 before_install:
   - export OS_NAME=$(lsb_release -is | tr "A-Z" "a-z" || echo "osx")
