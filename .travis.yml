@@ -1,5 +1,6 @@
 ---
 language: erlang
+otp_release: "26.0"
 
 env:
   global:
