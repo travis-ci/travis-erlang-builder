@@ -18,6 +18,7 @@ jobs:
     - dist: jammy
       name: jammy
     - dist: noble
+      language: minimal
       name: noble
 
     - dist: bionic
